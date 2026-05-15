@@ -1,0 +1,23 @@
+# Secrets
+.env
+*.bak
+*.bak.*
+
+# Generated artifacts
+software/asn-classifier/app_classify.star
+software/asn-classifier/ip2asn-v4.tsv.gz
+
+# Logs & data
+*.log
+influxdb_data/
+grafana_data/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db

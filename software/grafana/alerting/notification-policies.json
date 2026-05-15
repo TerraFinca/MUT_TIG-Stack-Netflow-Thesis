@@ -1,0 +1,79 @@
+{
+  "receiver": "Telegram-MIIX",
+  "group_by": [
+    "grafana_folder",
+    "alertname"
+  ],
+  "routes": [
+    {
+      "receiver": "Email-MIIX",
+      "object_matchers": [
+        [
+          "alert_type",
+          "=",
+          "vlan-outage"
+        ]
+      ],
+      "mute_time_intervals": [
+        "outside-business-hours"
+      ],
+      "continue": true,
+      "group_wait": "30s",
+      "group_interval": "5m",
+      "repeat_interval": "4h"
+    },
+    {
+      "receiver": "Telegram-MIIX",
+      "object_matchers": [
+        [
+          "alert_type",
+          "=",
+          "vlan-outage"
+        ]
+      ],
+      "mute_time_intervals": [
+        "outside-business-hours"
+      ],
+      "group_wait": "30s",
+      "group_interval": "5m",
+      "repeat_interval": "4h"
+    },
+    {
+      "receiver": "Email-MIIX",
+      "object_matchers": [
+        [
+          "alert_type",
+          "=",
+          "after-hours"
+        ]
+      ],
+      "mute_time_intervals": [
+        "daytime-mute"
+      ],
+      "continue": true,
+      "group_wait": "30s",
+      "group_interval": "5m",
+      "repeat_interval": "4h"
+    },
+    {
+      "receiver": "Telegram-MIIX",
+      "object_matchers": [
+        [
+          "alert_type",
+          "=",
+          "after-hours"
+        ]
+      ],
+      "mute_time_intervals": [
+        "daytime-mute"
+      ],
+      "group_wait": "30s",
+      "group_interval": "5m",
+      "repeat_interval": "4h"
+    }
+  ],
+  "group_wait": "30s",
+  "group_interval": "5m",
+  "repeat_interval": "4h",
+  "provenance": "api"
+}

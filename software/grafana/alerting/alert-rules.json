@@ -1,0 +1,1858 @@
+[
+  {
+    "id": 20,
+    "uid": "dfluhas1cvoxsd",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-after-hours",
+    "title": "MIIX-After-Hours-Activity",
+    "condition": "C",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 1800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"traffic\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 30m AND \"src\" =~ /^192\\.168\\.5[2-4]\\./",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "B",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "conditions": [
+            {
+              "evaluator": {
+                "params": [
+                  52428800
+                ],
+                "type": "gt"
+              },
+              "operator": {
+                "type": "and"
+              },
+              "query": {
+                "params": []
+              },
+              "reducer": {
+                "params": [],
+                "type": "last"
+              },
+              "type": "query"
+            }
+          ],
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "C",
+          "type": "threshold"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:02:15+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "30m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Total MIIX traffic exceeded 50 MB in the last 30 minutes during off-hours (22:00-06:00 Asia/Bangkok).\n\nTotal traffic: {{ $values.B }} bytes\nThreshold: 52428800 bytes (50 MB)\n\nAction:\n- Check the Top Users panel on the dashboard\n- Investigate the source IP\n- Verify if this is legitimate (scheduled backup) or not",
+      "summary": "After-hours traffic spike detected"
+    },
+    "labels": {
+      "Severity": "warning",
+      "alert_type": "after-hours"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 6,
+    "uid": "dfluh80mrcjcwa",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1311-Indoor-Outdoor-PLC",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:24+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1311 is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1311 (Indoor+Outdoor PLC) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Indoor+Outdoor (PLC)",
+      "vlan": "1311"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 7,
+    "uid": "cfluh9syw75kwe",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1312-PLC-3D-Printing",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:57+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1312 PLC + 3D Printing is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1312 (PLC + 3D Printing) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "PLC + 3D Printing",
+      "vlan": "1312"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 8,
+    "uid": "ffluh9ti3x1c0b",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1313-Robotic-Lab",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(9[6-9]|10[0-3])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(9[6-9]|10[0-3])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:58+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1313 Robotic Lab is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1313 (Robotic Lab) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Robotic Lab",
+      "vlan": "1313"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 9,
+    "uid": "dfluh9u1vm3uob",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1314-Indoor-Outdoor-Workshop",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.([0-9]|[12][0-9]|3[01])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.([0-9]|[12][0-9]|3[01])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:58+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1314 Indoor/Outdoor Workshop is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1314 (Indoor/Outdoor Workshop) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Indoor/Outdoor Workshop",
+      "vlan": "1314"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 10,
+    "uid": "efluh9ulfthc0d",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1315-Staff-Room",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(11[2-9]|12[0-7])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(11[2-9]|12[0-7])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:58+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1315 Staff Room is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1315 (Staff Room) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Staff Room",
+      "vlan": "1315"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 11,
+    "uid": "ffluh9v3el6v4f",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1321-Student-Project-Room",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(12[89]|1[3-5][0-9])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(12[89]|1[3-5][0-9])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:58+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1321 Student Project Room is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1321 (Student Project Room) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Student Project Room",
+      "vlan": "1321"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 12,
+    "uid": "cfluh9vlxc35sd",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1322-Innovation-Room",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(1[6-8][0-9]|19[01])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(1[6-8][0-9]|19[01])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:59+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1322 Innovation Room is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1322 (Innovation Room) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Innovation Room",
+      "vlan": "1322"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 13,
+    "uid": "bfluh9w4g2zgge",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1323-MUT-Satellite-Center",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:59+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1323 MUT Satellite Center is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1323 (MUT Satellite Center) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "MUT Satellite Center",
+      "vlan": "1323"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 14,
+    "uid": "dfluh9wndt9tsf",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1324-Office-1-2-3",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:59+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1324 Office 1+2+3 is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1324 (Office 1+2+3) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Office 1+2+3",
+      "vlan": "1324"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 15,
+    "uid": "efluh9x5k2oe8e",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1325-Air-Control",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.52\\.(10[4-9]|11[01])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.52\\.(10[4-9]|11[01])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:01:59+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1325 Air Control is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1325 (Air Control) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Air Control",
+      "vlan": "1325"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 16,
+    "uid": "dfluh9xsxmgw0c",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1331-Electronic-Lab-1-2",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.53\\.([0-5][0-9]|6[0-3])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.53\\.([0-5][0-9]|6[0-3])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:02:00+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1331 Electronic Lab 1+2 is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1331 (Electronic Lab 1+2) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Electronic Lab 1+2",
+      "vlan": "1331"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 17,
+    "uid": "cfluh9yccu1oge",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1332-Micro-Lab",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.53\\.(1[2-9][0-9]|2[0-4][0-9]|25[0-5])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.53\\.(1[2-9][0-9]|2[0-4][0-9]|25[0-5])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:02:00+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1332 Micro Lab is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1332 (Micro Lab) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Micro Lab",
+      "vlan": "1332"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 18,
+    "uid": "bfluh9yuql5a8b",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1333-Electronic-Lab-3",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:02:00+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1333 Electronic Lab 3 is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1333 (Electronic Lab 3) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Electronic Lab 3",
+      "vlan": "1333"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  },
+  {
+    "id": 19,
+    "uid": "ffluh9zhco1z4b",
+    "orgID": 1,
+    "folderUID": "efiqrzw1vlkw0c",
+    "ruleGroup": "miix-vlan-outage",
+    "title": "MIIX-VLAN-Outage-1341-Teacher-Room",
+    "condition": "E",
+    "data": [
+      {
+        "refId": "A",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 900,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT sum(\"in_bytes\") AS \"current\" FROM \"raw_24h\".\"netflow\" WHERE time > now() - 15m AND \"src\" =~ /^192\\.168\\.54\\.([0-9]|[1-9][0-9]|1[01][0-9]|12[0-7])$/",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "B",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 604800,
+          "to": 0
+        },
+        "datasourceUid": "dfgoh3k83zw1se",
+        "model": {
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "query": "SELECT mean(\"in_bytes\") AS \"baseline_5m\" FROM \"agg_5m_7d\".\"netflow_5m\" WHERE time > now() - 7d AND \"src\" =~ /^192\\.168\\.54\\.([0-9]|[1-9][0-9]|1[01][0-9]|12[0-7])$/",
+          "rawQuery": true,
+          "refId": "B",
+          "resultFormat": "time_series"
+        }
+      },
+      {
+        "refId": "C",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "A",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "C",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "D",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "B",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "reducer": "last",
+          "refId": "D",
+          "type": "reduce"
+        }
+      },
+      {
+        "refId": "E",
+        "queryType": "",
+        "relativeTimeRange": {
+          "from": 0,
+          "to": 0
+        },
+        "datasourceUid": "__expr__",
+        "model": {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$C < $D * 0.15",
+          "intervalMs": 1000,
+          "maxDataPoints": 43200,
+          "refId": "E",
+          "type": "math"
+        }
+      }
+    ],
+    "updated": "2026-05-12T21:02:01+07:00",
+    "noDataState": "OK",
+    "execErrState": "Error",
+    "for": "15m",
+    "keep_firing_for": "0s",
+    "annotations": {
+      "description": "Current 15-min traffic on VLAN 1341 Teacher Room is below 5% of 7-day baseline.\n\nCurrent: {{ $values.C }} bytes\nBaseline (5-min avg): {{ $values.D }} bytes\n\nAction: Check switch port, uplink, and devices in this room.",
+      "summary": "VLAN 1341 (Teacher Room) outage detected"
+    },
+    "labels": {
+      "Severity": "critical",
+      "alert_type": "vlan-outage",
+      "room": "Teacher Room",
+      "vlan": "1341"
+    },
+    "isPaused": false,
+    "notification_settings": null,
+    "record": null
+  }
+]

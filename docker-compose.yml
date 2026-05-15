@@ -1,0 +1,60 @@
+version: '3'
+services:
+  influxdb:
+    image: influxdb:1.8
+    container_name: influxdb
+    restart: always
+    ports:
+      - "127.0.0.1:8086:8086"
+    volumes:
+      - ./influxdb_data:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=netflow_db
+      - INFLUXDB_DATA_MAX_SERIES_PER_DATABASE=0
+      - INFLUXDB_DATA_MAX_VALUES_PER_TAG=0
+      - INFLUXDB_DATA_INDEX_VERSION=tsi1
+      - INFLUXDB_DATA_CACHE_MAX_MEMORY_SIZE=268435456
+      - INFLUXDB_DATA_CACHE_SNAPSHOT_MEMORY_SIZE=26214400
+      - INFLUXDB_DATA_SERIES_FILE_MAX_CONCURRENT_SNAPSHOT_COMPACTIONS=2
+    networks:
+      - tig-network
+
+  telegraf:
+    image: telegraf:1.38.1
+    container_name: telegraf
+    restart: always
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - ./app_classify.star:/etc/telegraf/app_classify.star:ro
+    ports:
+      - "2055:2055/udp"
+    depends_on:
+      - influxdb
+    networks:
+      - tig-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: always
+    ports:
+      - "${GRAFANA_BIND_IP:-0.0.0.0}:3000:3000"
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+      - ./grafana_templates/ng_alert_notification.html:/usr/share/grafana/public/emails/ng_alert_notification.html:ro
+    depends_on:
+      - influxdb
+    environment:
+      - TZ=Asia/Bangkok
+      - GF_SMTP_ENABLED=true
+      - GF_SMTP_HOST=smtp.gmail.com:587
+      - GF_SMTP_USER=${GF_SMTP_USER}
+      - GF_SMTP_PASSWORD=${GF_SMTP_PASSWORD}
+      - GF_SMTP_FROM_ADDRESS=${GF_SMTP_FROM_ADDRESS}
+      - GF_SMTP_FROM_NAME=Miix Network Monitoring
+    networks:
+      - tig-network
+
+networks:
+  tig-network:
+    driver: bridge

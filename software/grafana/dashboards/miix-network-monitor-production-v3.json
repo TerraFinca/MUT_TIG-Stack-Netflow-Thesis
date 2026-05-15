@@ -1,0 +1,1466 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "miix-network-monitor-e28094-production-v3",
+    "url": "/d/miix-prod-v3/miix-network-monitor-e28094-production-v3",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-05-10T19:11:23+07:00",
+    "updated": "2026-05-10T19:11:23+07:00",
+    "updatedBy": "Anonymous",
+    "createdBy": "Anonymous",
+    "version": 1,
+    "hasAcl": false,
+    "isFolder": false,
+    "apiVersion": "v0alpha1",
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 1,
+    "id": 4309978515517440,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 100,
+        "title": "Network Overview",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "blue",
+              "mode": "fixed"
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 0,
+          "y": 1
+        },
+        "id": 1,
+        "options": {
+          "colorMode": "background",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "query": "SELECT sum(\"in_bytes\") AS \"v\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Total Traffic",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "orange",
+              "mode": "fixed"
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 6,
+          "y": 1
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "background",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "query": "SELECT count(\"in_bytes\") AS \"v\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Total Flows",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "green",
+              "mode": "fixed"
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 12,
+          "y": 1
+        },
+        "id": 3,
+        "options": {
+          "colorMode": "background",
+          "reduceOptions": {
+            "calcs": [
+              "count"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "query": "SELECT count(\"in_bytes\") AS \"v\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.[0-9]+\\.[0-9]+$/ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Active Users",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "purple",
+              "mode": "fixed"
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 4,
+          "w": 6,
+          "x": 18,
+          "y": 1
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "background",
+          "reduceOptions": {
+            "calcs": [
+              "count"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "query": "SELECT count(\"in_bytes\") AS \"v\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/ AND \"dst\" !~ /^203\\.188\\.5/ AND \"dst\" !~ /^224\\./ GROUP BY \"dst\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Unique Destinations",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "lineWidth": 2
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 5
+        },
+        "id": 5,
+        "targets": [
+          {
+            "alias": "MIIX Traffic",
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/ GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Bandwidth Over Time",
+        "type": "timeseries"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 13
+        },
+        "id": 101,
+        "title": "Top 10 Users — Who Uses Most Bandwidth",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "decbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "src"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Room"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 240
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3]))$",
+                        "result": {
+                          "text": "1312 — PLC + 3D Printing"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5]))$",
+                        "result": {
+                          "text": "1311 — Indoor+Outdoor (PLC)"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(10[4-9]|11[01]))$",
+                        "result": {
+                          "text": "1325 — Air Control"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(9[6-9]|10[0-3]))$",
+                        "result": {
+                          "text": "1313 — Robotic Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(11[2-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1315 — Staff Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160))$",
+                        "result": {
+                          "text": "1321 — Student Project Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01]))$",
+                        "result": {
+                          "text": "1322 — Innovation Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3]))$",
+                        "result": {
+                          "text": "1323 — MUT Satellite Center"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1324 — Office 1+2+3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.[0-9]+)$",
+                        "result": {
+                          "text": "1314 — Indoor/Outdoor Workshop"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1333 — Electronic Lab 3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1332 — Micro Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.[0-9]+)$",
+                        "result": {
+                          "text": "1331 — Electronic Lab 1+2"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.54\\.[0-9]+)$",
+                        "result": {
+                          "text": "1341 — Teacher Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(.+)$",
+                        "result": {
+                          "text": "Unknown ($1)"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "in_bytes"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Traffic"
+                },
+                {
+                  "id": "unit",
+                  "value": "decbytes"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 130
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 14
+        },
+        "id": 10,
+        "targets": [
+          {
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.[0-9]+\\.[0-9]+$/ AND \"dst\" !~ /^224\\./ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "Top 10 Users",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "src",
+                  "in_bytes"
+                ]
+              }
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "regexp",
+              "regExp": "(?<IP>.+)",
+              "source": "src"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "indexByName": {
+                "IP": 0,
+                "in_bytes": 2,
+                "src": 1
+              },
+              "renameByName": {
+                "IP": "IP Address"
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 10
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 26
+        },
+        "id": 102,
+        "title": "Top 10 Conversations",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "decbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "src"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Source Room"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 240
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3]))$",
+                        "result": {
+                          "text": "1312 — PLC + 3D Printing"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5]))$",
+                        "result": {
+                          "text": "1311 — Indoor+Outdoor (PLC)"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(10[4-9]|11[01]))$",
+                        "result": {
+                          "text": "1325 — Air Control"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(9[6-9]|10[0-3]))$",
+                        "result": {
+                          "text": "1313 — Robotic Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(11[2-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1315 — Staff Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160))$",
+                        "result": {
+                          "text": "1321 — Student Project Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01]))$",
+                        "result": {
+                          "text": "1322 — Innovation Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3]))$",
+                        "result": {
+                          "text": "1323 — MUT Satellite Center"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1324 — Office 1+2+3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.[0-9]+)$",
+                        "result": {
+                          "text": "1314 — Indoor/Outdoor Workshop"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1333 — Electronic Lab 3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1332 — Micro Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.[0-9]+)$",
+                        "result": {
+                          "text": "1331 — Electronic Lab 1+2"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.54\\.[0-9]+)$",
+                        "result": {
+                          "text": "1341 — Teacher Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(.+)$",
+                        "result": {
+                          "text": "Unknown ($1)"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "in_bytes"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Traffic"
+                },
+                {
+                  "id": "unit",
+                  "value": "decbytes"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 130
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 12,
+          "w": 24,
+          "x": 0,
+          "y": 27
+        },
+        "id": 11,
+        "targets": [
+          {
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM \"5m_2d_top\".\"netflow_5m_topdst\" WHERE $timeFilter GROUP BY \"src\", \"dst\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "Top 10 Conversations",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "src",
+                  "dst",
+                  "in_bytes"
+                ]
+              }
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "regexp",
+              "regExp": "(?<Source_IP>.+)",
+              "source": "src"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "indexByName": {
+                "Source_IP": 0,
+                "dst": 2,
+                "in_bytes": 3,
+                "src": 1
+              },
+              "renameByName": {
+                "Source_IP": "Source IP",
+                "dst": "Destination"
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 10
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 39
+        },
+        "id": 106,
+        "title": "Top 10 Destinations",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 40
+        },
+        "id": 12,
+        "targets": [
+          {
+            "query": "SELECT sum(\"in_bytes\") AS \"Traffic\" FROM \"5m_2d_top\".\"netflow_5m_topdst\" WHERE $timeFilter GROUP BY \"dst\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "Top 10 Destinations",
+        "transformations": [
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {
+                "Time": true
+              },
+              "renameByName": {
+                "dst": "Destination"
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "Traffic"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "maxRows": 10
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 50
+        },
+        "id": 103,
+        "title": "Application Detection",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "lineWidth": 2
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 14,
+          "x": 0,
+          "y": 51
+        },
+        "id": 30,
+        "targets": [
+          {
+            "alias": "$tag_app",
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/ GROUP BY time($__interval), \"app\" fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Application Traffic Over Time",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 10,
+          "x": 14,
+          "y": 51
+        },
+        "id": 31,
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right"
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "alias": "$tag_app",
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/ GROUP BY \"app\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "App Distribution",
+        "type": "piechart"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 61
+        },
+        "id": 104,
+        "title": "Protocol Distribution",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 10,
+          "x": 0,
+          "y": 62
+        },
+        "id": 40,
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right"
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "alias": "$tag_protocol",
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/ GROUP BY \"protocol\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Protocol Distribution",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "lineWidth": 2
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 14,
+          "x": 10,
+          "y": 62
+        },
+        "id": 41,
+        "targets": [
+          {
+            "alias": "$tag_protocol",
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.5/ GROUP BY time($__interval), \"protocol\" fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Protocol Over Time",
+        "type": "timeseries"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 72
+        },
+        "id": 105,
+        "title": "Per Room Usage",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "drawStyle": "line",
+              "fillOpacity": 20,
+              "lineWidth": 2
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 73
+        },
+        "id": 50,
+        "targets": [
+          {
+            "alias": "Room Traffic",
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^($vlan)$/ GROUP BY time($__interval) fill(null)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Room Bandwidth — $vlan",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "decbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "src"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Room"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 240
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3]))$",
+                        "result": {
+                          "text": "1312 — PLC + 3D Printing"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5]))$",
+                        "result": {
+                          "text": "1311 — Indoor+Outdoor (PLC)"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(10[4-9]|11[01]))$",
+                        "result": {
+                          "text": "1325 — Air Control"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(9[6-9]|10[0-3]))$",
+                        "result": {
+                          "text": "1313 — Robotic Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(11[2-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1315 — Staff Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160))$",
+                        "result": {
+                          "text": "1321 — Student Project Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01]))$",
+                        "result": {
+                          "text": "1322 — Innovation Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3]))$",
+                        "result": {
+                          "text": "1323 — MUT Satellite Center"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1324 — Office 1+2+3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.[0-9]+)$",
+                        "result": {
+                          "text": "1314 — Indoor/Outdoor Workshop"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1333 — Electronic Lab 3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1332 — Micro Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.[0-9]+)$",
+                        "result": {
+                          "text": "1331 — Electronic Lab 1+2"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.54\\.[0-9]+)$",
+                        "result": {
+                          "text": "1341 — Teacher Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(.+)$",
+                        "result": {
+                          "text": "Unknown ($1)"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "in_bytes"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Traffic"
+                },
+                {
+                  "id": "unit",
+                  "value": "decbytes"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 130
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 81
+        },
+        "id": 51,
+        "targets": [
+          {
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^($vlan)$/ AND \"dst\" !~ /^224\\./ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "Room Top 10 Users — $vlan",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "src",
+                  "in_bytes"
+                ]
+              }
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "regexp",
+              "regExp": "(?<IP>.+)",
+              "source": "src"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "indexByName": {
+                "IP": 0,
+                "in_bytes": 2,
+                "src": 1
+              },
+              "renameByName": {
+                "IP": "IP Address"
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 10
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 81
+        },
+        "id": 52,
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right"
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ]
+          }
+        },
+        "targets": [
+          {
+            "alias": "$tag_app",
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^($vlan)$/ GROUP BY \"app\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series"
+          }
+        ],
+        "title": "Room Apps — $vlan",
+        "type": "piechart"
+      }
+    ],
+    "refresh": "30s",
+    "schemaVersion": 42,
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "selected": true,
+            "text": "Raw 6 hours",
+            "value": "\"raw_6h\".\"netflow\""
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "Resolution",
+          "multi": false,
+          "name": "resolution",
+          "options": [],
+          "query": "Raw 6 hours : \"raw_6h\".\"netflow\",24 hours : \"1m_2d\".\"netflow_1m\",7 days : \"1h_30d\".\"netflow_1h_src\",30 days : \"1d_90d\".\"netflow_1d_src\"",
+          "type": "custom"
+        },
+        {
+          "current": {
+            "selected": true,
+            "text": "VLAN 1314 — Indoor/Outdoor Workshop",
+            "value": "192\\.168\\.52\\.(\\d|[1-2]\\d|3[0-1])"
+          },
+          "hide": 0,
+          "includeAll": false,
+          "label": "Select Room",
+          "multi": false,
+          "name": "vlan",
+          "options": [],
+          "query": "VLAN 1314 — Indoor/Outdoor Workshop : 192\\.168\\.52\\.(\\d|[1-2]\\d|3[0-1]),VLAN 1312 — PLC + 3D Printing : 192\\.168\\.52\\.(3[2-9]|[4-5]\\d|6[0-3]),VLAN 1311 — Indoor+Outdoor (PLC) : 192\\.168\\.52\\.(6[4-9]|[7-8]\\d|9[0-5]),VLAN 1313 — Robotic Lab : 192\\.168\\.52\\.(9[6-9]|10\\d|11[0-1]),VLAN 1315 — Staff Room : 192\\.168\\.52\\.(11[2-9]|12[0-7]),VLAN 1321 — Student Project Room : 192\\.168\\.52\\.(12[8-9]|1[3-4]\\d|15\\d),VLAN 1322 — Innovation Room : 192\\.168\\.52\\.(16\\d|1[7-8]\\d|19[0-1]),VLAN 1323 — MUT Satellite Center : 192\\.168\\.52\\.(19[2-9]|2[0-1]\\d|22[0-3]),VLAN 1324 — Office 1+2+3 : 192\\.168\\.52\\.(22[4-9]|2[3-4]\\d|25[0-5]),VLAN 1331 — Electronic Lab 1+2 : 192\\.168\\.53\\.(\\d|[1-5]\\d|6[0-3]),VLAN 1333 — Electronic Lab 3 : 192\\.168\\.53\\.(6[4-9]|[7-9]\\d|1[0-1]\\d|12[0-7]),VLAN 1332 — Micro Lab : 192\\.168\\.53\\.(12[8-9]|1[3-9]\\d|2[0-4]\\d|25[0-5]),VLAN 1341 — Teacher Room : 192\\.168\\.54\\.(\\d|[1-9]\\d|1[0-1]\\d|12[0-7])",
+          "type": "custom"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "Asia/Bangkok",
+    "title": "MIIX Network Monitor — Production v3",
+    "uid": "miix-prod-v3",
+    "version": 1,
+    "weekStart": ""
+  }
+}

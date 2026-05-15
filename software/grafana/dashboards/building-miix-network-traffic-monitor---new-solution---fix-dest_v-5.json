@@ -1,0 +1,4223 @@
+{
+  "meta": {
+    "type": "db",
+    "canSave": true,
+    "canEdit": true,
+    "canAdmin": true,
+    "canStar": true,
+    "canDelete": true,
+    "slug": "6479c02",
+    "url": "/d/adjxtm6/6479c02",
+    "expires": "0001-01-01T00:00:00Z",
+    "created": "2026-04-25T11:28:04+07:00",
+    "updated": "2026-04-25T22:25:57+07:00",
+    "updatedBy": "admin",
+    "createdBy": "admin",
+    "version": 8,
+    "hasAcl": false,
+    "isFolder": false,
+    "apiVersion": "v0alpha1",
+    "folderId": 0,
+    "folderUid": "",
+    "folderTitle": "General",
+    "folderUrl": "",
+    "provisioned": false,
+    "provisionedExternalId": "",
+    "annotationsPermissions": {
+      "dashboard": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      },
+      "organization": {
+        "canAdd": true,
+        "canEdit": true,
+        "canDelete": true
+      }
+    }
+  },
+  "dashboard": {
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": {
+            "type": "grafana",
+            "uid": "-- Grafana --"
+          },
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "description": "Building B — Network Traffic Monitor with auto-adaptive retention: Raw 24h → 1min 2d → 1hr 30d → 1day 1yr",
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 1,
+    "id": 3261164319752192,
+    "links": [],
+    "panels": [
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 300,
+        "panels": [],
+        "title": "🏢 Building B — Network Traffic Overview",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 12,
+              "gradientMode": "opacity",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "showValues": false,
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1314 — Indoor/Outdoor Workshop"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#73BF69",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "B"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1312 — PLC + 3D Printing"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#F2495C",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "C"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1311 — Indoor+Outdoor (PLC)"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FF9830",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "D"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1313 — Robotic Lab"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#1F60C4",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "E"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1315 — Staff Room"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#8AB8FF",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "F"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1321 — Student Project Room"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#5794F2",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "G"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1322 — Innovation Room"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#B877D9",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "H"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1323 — MUT Satellite Center"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FF780A",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "I"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1324 — Office 1+2+3"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#96D98D",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "J"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1325 — Air Control"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FADE2A",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "K"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1331 — Electronic Lab 1+2"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FFCB7D",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "L"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1333 — Electronic Lab 3"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FF7383",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "M"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1332 — Micro Lab"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#56A64B",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "N"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1341 — Teacher Room"
+                },
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#E0B400",
+                    "mode": "fixed"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 24,
+          "x": 0,
+          "y": 1
+        },
+        "id": 6,
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "max",
+              "last"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true,
+            "sortBy": "Name",
+            "sortDesc": false
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.[0-9]+/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "A"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "B"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "C"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(9[6-9]|10[0-3])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "D"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(11[2-9]|12[0-7])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "E"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160)/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "F"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "G"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "H"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "I"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(10[4-9]|11[01])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "J"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.[0-9]+/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "K"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "L"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5])/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "M"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.54\\.[0-9]+/ AND \"dst\" !~ /^224\\./ GROUP BY time($__interval) fill(null)\n",
+            "rawQuery": true,
+            "refId": "N"
+          }
+        ],
+        "title": "📈 All VLAN Bandwidth — Stacked Bytes/Interval",
+        "type": "timeseries"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 11
+        },
+        "id": 301,
+        "panels": [],
+        "title": "📊 Live Summary",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#5794F2",
+              "mode": "fixed"
+            },
+            "displayName": "",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#5794F2",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 0,
+          "y": 12
+        },
+        "id": 2,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"v\" FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./ ",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "📦 Total Traffic",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#FF9830",
+              "mode": "fixed"
+            },
+            "displayName": "",
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#FF9830",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 6,
+          "y": 12
+        },
+        "id": 3,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT count(\"in_bytes\") AS \"v\" FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ ",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "🔀 Total Flows",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#73BF69",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#73BF69",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 12,
+          "y": 12
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT count(\"in_bytes\") AS \"v\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.[0-9]+\\.[0-9]+$/ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "👥 Active Users",
+        "transformations": [
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "count"
+              ]
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#B877D9",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#B877D9",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 6,
+          "x": 18,
+          "y": 12
+        },
+        "id": 5,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT SUM(\"in_bytes\") as in_bytes FROM $resolution_dst WHERE $timeFilter AND \"dst\" !~ /^203\\.188\\./ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^10\\./ AND \"dst\" !~ /^172\\./ AND \"dst\" !~ /^192\\.168\\./ GROUP BY \"dst\" SLIMIT 100000",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "🌐 Unique Sites",
+        "transformations": [
+          {
+            "id": "groupBy",
+            "options": {
+              "fields": {
+                "dst": {
+                  "aggregations": [],
+                  "operation": "groupby"
+                },
+                "in_bytes": {
+                  "aggregations": [
+                    "sum"
+                  ],
+                  "operation": "aggregate"
+                }
+              }
+            }
+          },
+          {
+            "id": "reduce",
+            "options": {
+              "reducers": [
+                "count"
+              ]
+            }
+          }
+        ],
+        "type": "stat"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 15
+        },
+        "id": 7,
+        "panels": [],
+        "title": "2️⃣ Top Talkers — ใครใช้ Bandwidth มากสุด",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlPu"
+            },
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 50000000
+                },
+                {
+                  "color": "red",
+                  "value": 200000000
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "id": 8,
+        "options": {
+          "displayMode": "gradient",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 16,
+          "minVizWidth": 8,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/^(in_bytes|Value)$/",
+            "values": true
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "valueMode": "color"
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.[0-9]+\\.[0-9]+$/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "🏆 Top 20 Users — Bar Gauge",
+        "transformations": [
+          {
+            "id": "labelsToFields",
+            "options": {
+              "keepLabels": [
+                "src"
+              ],
+              "mode": "columns"
+            }
+          },
+          {
+            "id": "merge",
+            "options": {}
+          },
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "pattern": "^(src|in_bytes|Value)$"
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": [
+                {
+                  "desc": true,
+                  "displayName": "Value"
+                }
+              ],
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "Value"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 20
+            }
+          }
+        ],
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "left",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "footer": {
+                "reducers": []
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "src"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Room"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 240
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3]))$",
+                        "result": {
+                          "text": "1312 — PLC + 3D Printing"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5]))$",
+                        "result": {
+                          "text": "1311 — Indoor+Outdoor (PLC)"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(10[4-9]|11[01]))$",
+                        "result": {
+                          "text": "1325 — Air Control"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(9[6-9]|10[0-3]))$",
+                        "result": {
+                          "text": "1313 — Robotic Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(11[2-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1315 — Staff Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160))$",
+                        "result": {
+                          "text": "1321 — Student Project Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01]))$",
+                        "result": {
+                          "text": "1322 — Innovation Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3]))$",
+                        "result": {
+                          "text": "1323 — MUT Satellite Center"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1324 — Office 1+2+3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.[0-9]+)$",
+                        "result": {
+                          "text": "1314 — Indoor/Outdoor Workshop"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1333 — Electronic Lab 3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1332 — Micro Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.[0-9]+)$",
+                        "result": {
+                          "text": "1331 — Electronic Lab 1+2"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.54\\.[0-9]+)$",
+                        "result": {
+                          "text": "1341 — Teacher Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(.+)$",
+                        "result": {
+                          "text": "Unknown ($1)"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "in_bytes"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Traffic"
+                },
+                {
+                  "id": "unit",
+                  "value": "decbytes"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 130
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "id": 9,
+        "options": {
+          "cellHeight": "sm",
+          "showHeader": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^203\\.188\\.[0-9]+\\.[0-9]+$/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "📋 Top 20 Users — Table",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "src",
+                  "in_bytes"
+                ]
+              }
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "regexp",
+              "regExp": "(?<IP>.+)",
+              "source": "src"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "includeByName": {},
+              "indexByName": {
+                "NewField": 0,
+                "in_bytes": 2,
+                "src": 1
+              },
+              "renameByName": {
+                "IP": "IP Address",
+                "NewField": "IP Address",
+                "in_bytes": "",
+                "src": ""
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": [
+                {
+                  "desc": true,
+                  "displayName": "in_bytes"
+                }
+              ],
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 20
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 26
+        },
+        "id": 10,
+        "panels": [],
+        "title": "3️⃣ Top Destinations — ไปที่ไหนมากสุด",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-GrYlRd"
+            },
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 27
+        },
+        "id": 11,
+        "options": {
+          "displayMode": "gradient",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 16,
+          "minVizWidth": 8,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/^in_bytes/",
+            "values": true
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "valueMode": "color"
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" \nFROM $resolution_dst \nWHERE $timeFilter \nAND \"dst\" !~ /^203\\.188\\./\nAND \"dst\" !~ /^224\\./\nAND \"dst\" !~ /^10\\./\nAND \"dst\" !~ /^172\\./\nAND \"dst\" !~ /^192\\.168\\./\nGROUP BY \"dst\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "🌐 Top 20 Destinations — Bar Gauge",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "dst",
+                  "in_bytes"
+                ]
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": [
+                {
+                  "desc": true,
+                  "displayName": "in_bytes"
+                }
+              ],
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 20
+            }
+          }
+        ],
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "left",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "footer": {
+                "reducers": []
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "dst"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Destination IP"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 145
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Destination Application"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 175
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "^(74\\.125\\.|142\\.250\\.|172\\.217\\.|216\\.58\\.).*$",
+                        "result": {
+                          "text": "🎬 YouTube/Google"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(157\\.240\\.|31\\.13\\.).*$",
+                        "result": {
+                          "text": "📘 Facebook/Meta"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^17\\..*$",
+                        "result": {
+                          "text": "🍎 Apple/iCloud"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(162\\.159\\.|104\\.1[6-9]\\.).*$",
+                        "result": {
+                          "text": "🟠 Cloudflare"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(13\\.107\\.|20\\.190\\.|52\\.).*$",
+                        "result": {
+                          "text": "🪟 Microsoft/Azure"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^125\\.209\\..*$",
+                        "result": {
+                          "text": "💚 LINE"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^16\\.163\\..*$",
+                        "result": {
+                          "text": "🎵 TikTok"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": ".*",
+                        "result": {
+                          "text": "🌐 Other"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "src"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Source IP"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 140
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Source Room"
+              },
+              "properties": [
+                {
+                  "id": "custom.width",
+                  "value": 210
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3]))$",
+                        "result": {
+                          "text": "1312 — PLC + 3D Printing"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5]))$",
+                        "result": {
+                          "text": "1311 — Indoor+Outdoor (PLC)"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(10[4-9]|11[01]))$",
+                        "result": {
+                          "text": "1325 — Air Control"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(9[6-9]|10[0-3]))$",
+                        "result": {
+                          "text": "1313 — Robotic Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(11[2-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1315 — Staff Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160))$",
+                        "result": {
+                          "text": "1321 — Student Project Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01]))$",
+                        "result": {
+                          "text": "1322 — Innovation Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3]))$",
+                        "result": {
+                          "text": "1323 — MUT Satellite Center"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1324 — Office 1+2+3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.[0-9]+)$",
+                        "result": {
+                          "text": "1314 — Indoor/Outdoor Workshop"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7]))$",
+                        "result": {
+                          "text": "1333 — Electronic Lab 3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "text": "1332 — Micro Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.[0-9]+)$",
+                        "result": {
+                          "text": "1331 — Electronic Lab 1+2"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.54\\.[0-9]+)$",
+                        "result": {
+                          "text": "1341 — Teacher Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(.+)$",
+                        "result": {
+                          "text": "Unknown ($1)"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "in_bytes"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Traffic"
+                },
+                {
+                  "id": "unit",
+                  "value": "decbytes"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 110
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 27
+        },
+        "id": 12,
+        "options": {
+          "cellHeight": "sm",
+          "showHeader": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution_dst WHERE $timeFilter AND \"dst\" =~ /.+/ AND \"dst\" !~ /^203\\.188\\./ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^10\\./ AND \"dst\" !~ /^172\\./ AND \"dst\" !~ /^192\\.168\\./ GROUP BY \"dst\", \"src\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "📋 Top 20 Destinations — Table",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "dst",
+                  "src",
+                  "in_bytes"
+                ]
+              }
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "regexp",
+              "regExp": "(?<App>.+)",
+              "source": "dst"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "renameByName": {
+                "NewField": "DstApp"
+              }
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "regexp",
+              "regExp": "(?<Room>.+)",
+              "source": "src"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "indexByName": {
+                "DstApp": 1,
+                "NewField 1": 3,
+                "dst": 0,
+                "in_bytes": 4,
+                "src": 2
+              },
+              "renameByName": {
+                "DstApp": "Destination Application",
+                "NewField 1": "Source Room"
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": [
+                {
+                  "desc": true,
+                  "displayName": "in_bytes"
+                }
+              ],
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 20
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 37
+        },
+        "id": 13,
+        "panels": [],
+        "title": "4️⃣ Protocol Distribution — สัดส่วน TCP/UDP/ICMP",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 38
+        },
+        "id": 14,
+        "options": {
+          "displayLabels": [
+            "name",
+            "percent"
+          ],
+          "legend": {
+            "calcs": [
+              "sum",
+              "percent"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "sort": "desc",
+          "tooltip": {
+            "hideZeros": true,
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "alias": "TCP",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ AND \"protocol\" = 'tcp'",
+            "rawQuery": true,
+            "refId": "A"
+          },
+          {
+            "alias": "UDP",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ AND \"protocol\" = 'udp'",
+            "rawQuery": true,
+            "refId": "B"
+          },
+          {
+            "alias": "ICMP",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ AND \"protocol\" = 'icmp'",
+            "rawQuery": true,
+            "refId": "C"
+          },
+          {
+            "alias": "IGMP",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ AND \"protocol\" = 'igmp'",
+            "rawQuery": true,
+            "refId": "D"
+          },
+          {
+            "alias": "IPv6",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ AND \"protocol\" = 'ipv6'",
+            "rawQuery": true,
+            "refId": "E"
+          }
+        ],
+        "title": "🥧 Protocol Distribution",
+        "type": "piechart"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 10,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "linear",
+              "lineWidth": 2,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "never",
+              "showValues": false,
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 16,
+          "x": 8,
+          "y": 38
+        },
+        "id": 15,
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "max"
+            ],
+            "displayMode": "table",
+            "placement": "bottom",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") FROM $resolution WHERE $timeFilter AND \"dst\" !~ /^224\\./ GROUP BY time($__interval), \"protocol\" fill(null)",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "📊 Protocol Traffic Over Time",
+        "type": "timeseries"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 46
+        },
+        "id": 16,
+        "panels": [],
+        "title": "5️⃣ Application Detection — Map IP → App",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisBorderShow": false,
+              "axisCenteredZero": false,
+              "axisColorMode": "text",
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "barWidthFactor": 0.6,
+              "drawStyle": "line",
+              "fillOpacity": 85,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "insertNulls": false,
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "showValues": false,
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "normal"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 16,
+          "x": 0,
+          "y": 47
+        },
+        "id": 17,
+        "options": {
+          "legend": {
+            "calcs": [
+              "mean",
+              "max",
+              "last"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "alias": "",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "groupBy": [],
+            "measurement": "",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution_app WHERE $timeFilter GROUP BY time($__interval), \"app\" fill(0)",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [],
+            "tags": []
+          }
+        ],
+        "title": "📱 Application Traffic Detection",
+        "type": "timeseries"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 47
+        },
+        "id": 18,
+        "options": {
+          "displayLabels": [
+            "name",
+            "percent"
+          ],
+          "legend": {
+            "calcs": [
+              "sum",
+              "percent"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "sort": "desc",
+          "tooltip": {
+            "hideZeros": true,
+            "mode": "multi",
+            "sort": "desc"
+          }
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "alias": "$tag_app",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "groupBy": [],
+            "measurement": "",
+            "orderByTime": "ASC",
+            "policy": "default",
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution_app WHERE $timeFilter GROUP BY \"app\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "time_series",
+            "select": [],
+            "tags": []
+          }
+        ],
+        "title": "🥧 App Distribution",
+        "type": "piechart"
+      },
+      {
+        "collapsed": false,
+        "gridPos": {
+          "h": 1,
+          "w": 24,
+          "x": 0,
+          "y": 55
+        },
+        "id": 19,
+        "panels": [],
+        "title": "6️⃣ Per Room Usage — ห้องไหน ใครใช้ เท่าไหร่",
+        "type": "row"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#73BF69",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#73BF69",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 56
+        },
+        "id": 20,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.[0-9]+/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1314 — Indoor/Outdoor Workshop",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#F2495C",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#F2495C",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 4,
+          "y": 56
+        },
+        "id": 21,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1312 — PLC + 3D Printing",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#FF9830",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#FF9830",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 8,
+          "y": 56
+        },
+        "id": 22,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1311 — Indoor+Outdoor (PLC)",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#1F60C4",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#1F60C4",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 12,
+          "y": 56
+        },
+        "id": 23,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(9[6-9]|10[0-3])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1313 — Robotic Lab",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#8AB8FF",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#8AB8FF",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 16,
+          "y": 56
+        },
+        "id": 24,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(11[2-9]|12[0-7])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1315 — Staff Room",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#5794F2",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#5794F2",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 20,
+          "y": 56
+        },
+        "id": 25,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160)/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1321 — Student Project Room",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#B877D9",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#B877D9",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 59
+        },
+        "id": 26,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1322 — Innovation Room",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#FF780A",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#FF780A",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 4,
+          "y": 59
+        },
+        "id": 27,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1323 — MUT Satellite Center",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#96D98D",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#96D98D",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 8,
+          "y": 59
+        },
+        "id": 28,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1324 — Office 1+2+3",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#FADE2A",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#FADE2A",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 12,
+          "y": 59
+        },
+        "id": 29,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(10[4-9]|11[01])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1325 — Air Control",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#FFCB7D",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#FFCB7D",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 16,
+          "y": 59
+        },
+        "id": 30,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.[0-9]+/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1331 — Electronic Lab 1+2",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#FF7383",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#FF7383",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 20,
+          "y": 59
+        },
+        "id": 31,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1333 — Electronic Lab 3",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#56A64B",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#56A64B",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 0,
+          "y": 62
+        },
+        "id": 32,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5])/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1332 — Micro Lab",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "fixedColor": "#E0B400",
+              "mode": "fixed"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "#E0B400",
+                  "value": 0
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 3,
+          "w": 4,
+          "x": 4,
+          "y": 62
+        },
+        "id": 33,
+        "options": {
+          "colorMode": "background",
+          "graphMode": "area",
+          "justifyMode": "center",
+          "orientation": "auto",
+          "percentChangeColorMode": "standard",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showPercentChange": false,
+          "textMode": "value_and_name",
+          "wideLayout": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.54\\.[0-9]+/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./",
+            "rawQuery": true,
+            "refId": "A"
+          }
+        ],
+        "title": "VLAN 1341 — Teacher Room",
+        "type": "stat"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "continuous-BlPu"
+            },
+            "mappings": [],
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "yellow",
+                  "value": 10000000
+                },
+                {
+                  "color": "red",
+                  "value": 50000000
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 8,
+          "y": 62
+        },
+        "id": 35,
+        "options": {
+          "displayMode": "gradient",
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom",
+            "showLegend": false
+          },
+          "maxVizHeight": 300,
+          "minVizHeight": 16,
+          "minVizWidth": 8,
+          "namePlacement": "auto",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "sum"
+            ],
+            "fields": "/^in_bytes/",
+            "values": true
+          },
+          "showUnfilled": true,
+          "sizing": "auto",
+          "valueMode": "color"
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^($vlan)$/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "🏆 Top Users — $vlan",
+        "transformations": [
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "src",
+                  "in_bytes"
+                ]
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": [
+                {
+                  "desc": true,
+                  "displayName": "in_bytes"
+                }
+              ],
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 20
+            }
+          }
+        ],
+        "type": "bargauge"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "custom": {
+              "align": "left",
+              "cellOptions": {
+                "type": "auto"
+              },
+              "footer": {
+                "reducers": []
+              },
+              "inspect": false
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": 0
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "src"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Room"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 240
+                },
+                {
+                  "id": "mappings",
+                  "value": [
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.54\\.[0-9]+)$",
+                        "result": {
+                          "index": 0,
+                          "text": "1341 — Teacher Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.([0-9]|[1-5][0-9]|6[0-3]))$",
+                        "result": {
+                          "index": 1,
+                          "text": "1331 — Electronic Lab 1+2"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "index": 2,
+                          "text": "1332 — Micro Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7]))$",
+                        "result": {
+                          "index": 3,
+                          "text": "1333 — Electronic Lab 3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.[0-9]+)$",
+                        "result": {
+                          "index": 4,
+                          "text": "1314 — Indoor/Outdoor Workshop"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5]))$",
+                        "result": {
+                          "index": 5,
+                          "text": "1324 — Office 1+2+3"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3]))$",
+                        "result": {
+                          "index": 6,
+                          "text": "1323 — MUT Satellite Center"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01]))$",
+                        "result": {
+                          "index": 7,
+                          "text": "1322 — Innovation Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160))$",
+                        "result": {
+                          "index": 8,
+                          "text": "1321 — Student Project Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(11[2-9]|12[0-7]))$",
+                        "result": {
+                          "index": 9,
+                          "text": "1315 — Staff Room"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(9[6-9]|10[0-3]))$",
+                        "result": {
+                          "index": 10,
+                          "text": "1313 — Robotic Lab"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(10[4-9]|11[01]))$",
+                        "result": {
+                          "index": 11,
+                          "text": "1325 — Air Control"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5]))$",
+                        "result": {
+                          "index": 12,
+                          "text": "1311 — Indoor+Outdoor (PLC)"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3]))$",
+                        "result": {
+                          "index": 13,
+                          "text": "1312 — PLC + 3D Printing"
+                        }
+                      },
+                      "type": "regex"
+                    },
+                    {
+                      "options": {
+                        "pattern": "^(.+)$",
+                        "result": {
+                          "index": 14,
+                          "text": "Unknown ($1)"
+                        }
+                      },
+                      "type": "regex"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "in_bytes"
+              },
+              "properties": [
+                {
+                  "id": "displayName",
+                  "value": "Traffic"
+                },
+                {
+                  "id": "unit",
+                  "value": "decbytes"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 130
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byName",
+                "options": "Last Active"
+              },
+              "properties": [
+                {
+                  "id": "unit",
+                  "value": "dateTimeFromNow"
+                },
+                {
+                  "id": "custom.width",
+                  "value": 145
+                },
+                {
+                  "id": "noValue",
+                  "value": "No data (>90d)"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 62
+        },
+        "id": 36,
+        "options": {
+          "cellHeight": "sm",
+          "showHeader": true
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^($vlan)$/ AND \"dst\" !~ /^224\\./ AND \"dst\" !~ /^239\\./  GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "A",
+            "resultFormat": "table"
+          },
+          {
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT last(\"in_bytes\") AS \"last_check\" FROM \"1d_90d\".\"netflow_1d_src\" WHERE time > now() - 90d AND \"src\" =~ /^($vlan)$/ GROUP BY \"src\"",
+            "rawQuery": true,
+            "refId": "B",
+            "resultFormat": "table"
+          }
+        ],
+        "title": "📋 Top 10 Users — $vlan",
+        "transformations": [
+          {
+            "id": "joinByField",
+            "options": {
+              "byField": "src",
+              "mode": "outer"
+            }
+          },
+          {
+            "id": "filterFieldsByName",
+            "options": {
+              "include": {
+                "names": [
+                  "src",
+                  "in_bytes",
+                  "Time netflow_1d"
+                ]
+              }
+            }
+          },
+          {
+            "id": "extractFields",
+            "options": {
+              "format": "regexp",
+              "regExp": "(?<IP>.+)",
+              "source": "src"
+            }
+          },
+          {
+            "id": "organize",
+            "options": {
+              "excludeByName": {},
+              "includeByName": {},
+              "indexByName": {
+                "NewField": 0,
+                "Time netflow_1d": 3,
+                "in_bytes": 2,
+                "src": 1
+              },
+              "renameByName": {
+                "NewField": "IP Address",
+                "Time netflow_1d": "Last Active",
+                "in_bytes": "",
+                "src": ""
+              }
+            }
+          },
+          {
+            "id": "sortBy",
+            "options": {
+              "fields": [
+                {
+                  "desc": true,
+                  "displayName": "in_bytes"
+                }
+              ],
+              "sort": [
+                {
+                  "desc": true,
+                  "field": "in_bytes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "limit",
+            "options": {
+              "limitField": 10
+            }
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "dfgoh3k83zw1se"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "unit": "decbytes"
+          },
+          "overrides": [
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "A"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#73BF69",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1314 — Indoor/Outdoor Workshop"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "B"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#F2495C",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1312 — PLC + 3D Printing"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "C"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FF9830",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1311 — Indoor+Outdoor (PLC)"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "D"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#1F60C4",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1313 — Robotic Lab"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "E"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#8AB8FF",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1315 — Staff Room"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "F"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#5794F2",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1321 — Student Project Room"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "G"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#B877D9",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1322 — Innovation Room"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "H"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FF780A",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1323 — MUT Satellite Center"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "I"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#96D98D",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1324 — Office 1+2+3"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "J"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FADE2A",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1325 — Air Control"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "K"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FFCB7D",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1331 — Electronic Lab 1+2"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "L"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#FF7383",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1333 — Electronic Lab 3"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "M"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#56A64B",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1332 — Micro Lab"
+                }
+              ]
+            },
+            {
+              "matcher": {
+                "id": "byFrameRefID",
+                "options": "N"
+              },
+              "properties": [
+                {
+                  "id": "color",
+                  "value": {
+                    "fixedColor": "#E0B400",
+                    "mode": "fixed"
+                  }
+                },
+                {
+                  "id": "displayName",
+                  "value": "VLAN 1341 — Teacher Room"
+                }
+              ]
+            }
+          ]
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 0,
+          "y": 65
+        },
+        "id": 34,
+        "options": {
+          "legend": {
+            "calcs": [
+              "sum",
+              "percent"
+            ],
+            "displayMode": "table",
+            "placement": "right",
+            "showLegend": true
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "sort": "desc",
+          "tooltip": {
+            "hideZeros": false,
+            "mode": "multi",
+            "sort": "none"
+          }
+        },
+        "pluginVersion": "12.4.1",
+        "targets": [
+          {
+            "alias": "VLAN 1314 Indoor/Outdoor Workshop",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.[0-9]+/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "A"
+          },
+          {
+            "alias": "VLAN 1312 PLC + 3D Printing",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(3[2-9]|[4-5][0-9]|6[0-3])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "B"
+          },
+          {
+            "alias": "VLAN 1311 Indoor+Outdoor (PLC)",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(6[4-9]|[7-8][0-9]|9[0-5])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "C"
+          },
+          {
+            "alias": "VLAN 1313 Robotic Lab",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(9[6-9]|10[0-3])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "D"
+          },
+          {
+            "alias": "VLAN 1315 Staff Room",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(11[2-9]|12[0-7])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "E"
+          },
+          {
+            "alias": "VLAN 1321 Student Project Room",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(12[89]|1[3-5][0-9]|160)/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "F"
+          },
+          {
+            "alias": "VLAN 1322 Innovation Room",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(16[0-9]|1[7-8][0-9]|19[01])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "G"
+          },
+          {
+            "alias": "VLAN 1323 MUT Satellite Center",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(19[2-9]|2[01][0-9]|22[0-3])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "H"
+          },
+          {
+            "alias": "VLAN 1324 Office 1+2+3",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(22[4-9]|2[3-4][0-9]|25[0-5])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "I"
+          },
+          {
+            "alias": "VLAN 1325 Air Control",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.52\\.(10[4-9]|11[01])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "J"
+          },
+          {
+            "alias": "VLAN 1331 Electronic Lab 1+2",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.[0-9]+/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "K"
+          },
+          {
+            "alias": "VLAN 1333 Electronic Lab 3",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.(6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "L"
+          },
+          {
+            "alias": "VLAN 1332 Micro Lab",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.53\\.(12[89]|1[3-9][0-9]|2[0-4][0-9]|25[0-5])/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "M"
+          },
+          {
+            "alias": "VLAN 1341 Teacher Room",
+            "datasource": {
+              "type": "influxdb",
+              "uid": "dfgoh3k83zw1se"
+            },
+            "query": "SELECT sum(\"in_bytes\") AS \"in_bytes\" FROM $resolution WHERE $timeFilter AND \"src\" =~ /^192\\.168\\.54\\.[0-9]+/ AND \"dst\" !~ /^224\\./\n",
+            "rawQuery": true,
+            "refId": "N"
+          }
+        ],
+        "title": "🥧 Traffic Share by Room",
+        "type": "piechart"
+      }
+    ],
+    "preload": false,
+    "refresh": "5m",
+    "schemaVersion": 42,
+    "tags": [
+      "netflow",
+      "building-b",
+      "rfc7011"
+    ],
+    "templating": {
+      "list": [
+        {
+          "current": {
+            "text": "24 hours",
+            "value": "\"1m_2d\".\"netflow_1m\""
+          },
+          "description": "Choose data resolution. Match to your time range for best results.",
+          "includeAll": false,
+          "label": "📅 Data Resolution",
+          "name": "resolution",
+          "options": [],
+          "query": "Raw 6 hours : \"raw_6h\".\"netflow\",24 hours : \"1m_2d\".\"netflow_1m\",7 days : \"1h_30d\".\"netflow_1h_src\",1 month : \"1h_90d\".\"netflow_1h_src\",1 year : \"1d_90d\".\"netflow_1d_src\"",
+          "type": "custom",
+          "valuesFormat": "csv"
+        },
+        {
+          "current": {
+            "text": "192\\.168\\.54\\.(\\d|[1-9]\\d|1[0-1]\\d|12[0-7])",
+            "value": "192\\.168\\.54\\.(\\d|[1-9]\\d|1[0-1]\\d|12[0-7])"
+          },
+          "includeAll": false,
+          "label": "🏫 Select Room",
+          "name": "vlan",
+          "options": [],
+          "query": "VLAN 1314 — Indoor/Outdoor Workshop : 192\\.168\\.52\\.(\\d|[1-2]\\d|3[0-1]),VLAN 1312 — PLC + 3D Printing : 192\\.168\\.52\\.(3[2-9]|[4-5]\\d|6[0-3]),VLAN 1311 — Indoor+Outdoor (PLC) : 192\\.168\\.52\\.(6[4-9]|[7-8]\\d|9[0-5]),VLAN 1313 — Robotic Lab : 192\\.168\\.52\\.(9[6-9]|10\\d|11[0-1]),VLAN 1325 — Air Control : 192\\.168\\.52\\.(10[4-9]|11[0-1]),VLAN 1315 — Staff Room : 192\\.168\\.52\\.(11[2-9]|12[0-7]),VLAN 1321 — Student Project Room : 192\\.168\\.52\\.(12[8-9]|1[3-4]\\d|15\\d),VLAN 1322 — Innovation Room : 192\\.168\\.52\\.(16\\d|1[7-8]\\d|19[0-1]),VLAN 1323 — MUT Satellite Center : 192\\.168\\.52\\.(19[2-9]|2[0-1]\\d|22[0-3]),VLAN 1324 — Office 1+2+3 : 192\\.168\\.52\\.(22[4-9]|2[3-4]\\d|25[0-5]),VLAN 1331 — Electronic Lab 1+2 : 192\\.168\\.53\\.(\\d|[1-5]\\d|6[0-3]),VLAN 1333 — Electronic Lab 3 : 192\\.168\\.53\\.(6[4-9]|[7-9]\\d|1[0-1]\\d|12[0-7]),VLAN 1332 — Micro Lab : 192\\.168\\.53\\.(12[8-9]|1[3-9]\\d|2[0-4]\\d|25[0-5]),VLAN 1341 — Teacher Room : 192\\.168\\.54\\.(\\d|[1-9]\\d|1[0-1]\\d|12[0-7])",
+          "type": "custom",
+          "valuesFormat": "csv"
+        },
+        {
+          "current": {
+            "text": "24 hours",
+            "value": "\"5m_2d_top\".\"netflow_5m_topdst\""
+          },
+          "description": "Choose data resolution. Match to your time range for best results.",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Resolution",
+          "name": "resolution_dst",
+          "options": [],
+          "query": "Raw 6 hours : \"raw_6h\".\"netflow\",24 hours : \"5m_2d_top\".\"netflow_5m_topdst\",7 days : \"1h_30d_top\".\"netflow_1h_topdst\",1 month : \"1h_90d_top\".\"netflow_1h_topdst\",1 year : \"1d_90d_top\".\"netflow_1d_topdst\"",
+          "type": "custom",
+          "valuesFormat": "csv"
+        },
+        {
+          "current": {
+            "text": "24 hours",
+            "value": "\"1m_2d\".\"netflow_app_1m\""
+          },
+          "hide": 2,
+          "includeAll": false,
+          "label": "App Resolution",
+          "name": "resolution_app",
+          "options": [],
+          "query": "Raw 6 hours : \"1m_2d\".\"netflow_app_1m\",24 hours : \"1m_2d\".\"netflow_app_1m\",7 days : \"1h_30d\".\"netflow_app_1h\",1 month : \"1h_90d\".\"netflow_app_1h\",1 year : \"1d_90d\".\"netflow_app_1d\"",
+          "type": "custom",
+          "valuesFormat": "csv"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "Asia/Bangkok",
+    "title": "🏢 Building MIIX — Network Traffic Monitor - New Solution - Fix Dest_v.5",
+    "uid": "adjxtm6",
+    "version": 8,
+    "weekStart": ""
+  }
+}

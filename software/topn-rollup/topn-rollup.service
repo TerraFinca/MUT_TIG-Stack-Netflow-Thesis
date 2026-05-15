@@ -1,0 +1,9 @@
+[Unit]
+Description=TopN Rollback for NetFlow
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/topn_rollup/topn_rollup.py
+StandardOutput=journal
+StandardError=journal

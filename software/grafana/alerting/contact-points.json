@@ -1,0 +1,28 @@
+[
+  {
+    "uid": "cfiy94wfs49a8e",
+    "name": "Email-MIIX",
+    "type": "email",
+    "settings": {
+      "addresses": "${ALERT_EMAIL}",
+      "message": "{{ template \"miix-email-body\" . }}",
+      "singleEmail": false,
+      "subject": "{{ template \"miix-email-subject\" . }}"
+    },
+    "disableResolveMessage": false
+  },
+  {
+    "uid": "dfiqp394fjkzkf",
+    "name": "Telegram-MIIX",
+    "type": "telegram",
+    "settings": {
+      "bottoken": "${TELEGRAM_BOT_TOKEN}",
+      "chatid": "${TELEGRAM_CHAT_ID}",
+      "disable_notification": false,
+      "disable_web_page_preview": false,
+      "message": "{{ template \"miix-telegram\" . }}",
+      "protect_content": false
+    },
+    "disableResolveMessage": false
+  }
+]

@@ -1,0 +1,9 @@
+[Unit]
+Description=Auto-classify Other IPs to apps
+After=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /opt/topn_rollup/auto_classify_update.py
+StandardOutput=journal
+StandardError=journal

@@ -1,0 +1,72 @@
+[
+  {
+    "name": "daytime-mute",
+    "time_intervals": [
+      {
+        "times": [
+          {
+            "start_time": "06:00",
+            "end_time": "22:00"
+          }
+        ],
+        "location": "Asia/Bangkok"
+      }
+    ],
+    "version": "4d71de3a844b6e36"
+  },
+  {
+    "name": "office-hours",
+    "time_intervals": [
+      {
+        "times": [
+          {
+            "start_time": "08:00",
+            "end_time": "18:00"
+          }
+        ],
+        "weekdays": [
+          "monday:friday"
+        ]
+      }
+    ],
+    "version": "eafd734d34b41f21",
+    "provenance": "api"
+  },
+  {
+    "name": "outside-business-hours",
+    "time_intervals": [
+      {
+        "weekdays": [
+          "saturday",
+          "sunday"
+        ],
+        "location": "Asia/Bangkok"
+      },
+      {
+        "times": [
+          {
+            "start_time": "00:00",
+            "end_time": "08:00"
+          }
+        ],
+        "weekdays": [
+          "monday:friday"
+        ],
+        "location": "Asia/Bangkok"
+      },
+      {
+        "times": [
+          {
+            "start_time": "18:00",
+            "end_time": "24:00"
+          }
+        ],
+        "weekdays": [
+          "monday:friday"
+        ],
+        "location": "Asia/Bangkok"
+      }
+    ],
+    "version": "0fbe90f3b5caf499"
+  }
+]
