@@ -28,10 +28,10 @@ flow monitor MIIX-MONITOR
  cache timeout active 60
  cache entries 200000
 
-interface TenGigabitEthernet0/0/0
- ip flow monitor MIIX-MONITOR input
- ip flow monitor MIIX-MONITOR output
+! WAN-only single-chokepoint binding (final design — see thesis §3.3.2 and §4.3.7)
+! Internet uplink interface captures both ingress and egress flows in 2 bindings
+! without counter inflation that occurred with multi-interface binding.
 
-interface TenGigabitEthernet0/0/1
+interface TenGigabitEthernet0/0/0
  ip flow monitor MIIX-MONITOR input
  ip flow monitor MIIX-MONITOR output

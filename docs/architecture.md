@@ -13,8 +13,8 @@
 │  │  • flow exporter NECS-EXPORT (UDP 2055, NetFlow v9)          │  │
 │  │  • flow monitor MIIX-MONITOR (cache 60s / 15s, 200K entries) │  │
 │  └────────┬─────────────────────────────────────────────────────┘  │
-│           │ bound to Te0/0/0 (Internet uplink) + Te0/0/1 (Campus)  │
-│           │ both input AND output direction                        │
+│           │ bound to Te0/0/0 (Internet uplink, WAN-only)           │
+│           │ input + output direction (2 bindings, single chokepoint)│
 └───────────┼────────────────────────────────────────────────────────┘
             │
             │ NetFlow v9 / UDP 2055
@@ -30,7 +30,7 @@
 │  └────────┬─────────────────────────────────────────────────────┘  │
 │           ▼                                                        │
 │  ┌──────────────────────────────────────────────────────────────┐  │
-│  │  InfluxDB 1.8 (tsi1 index)                                   │  │
+│  │  InfluxDB 1.8.10 (tsi1 index)                                │  │
 │  │  • Database: netflow_db                                      │  │
 │  │  • Retention Policies (4 tiers):                             │  │
 │  │     - raw_24h     : netflow                  (24 hours)      │  │
@@ -62,7 +62,7 @@
 
 ## Data Flow (Step-by-step)
 
-1. **Capture** — ASR1001-X capture flow records ใน hardware QFP จาก traffic ที่ผ่าน Te0/0/0 และ Te0/0/1 ทั้ง input และ output direction (จับครบ 2 ทิศทาง)
+1. **Capture** — ASR1001-X capture flow records ใน hardware QFP จาก traffic ที่ผ่าน Te0/0/0 (Internet uplink, WAN-only) ทั้ง input และ output direction (จับครบ 2 ทิศทาง — final design หลัง empirical testing ดู thesis §4.3.7)
 2. **Export** — แปลงเป็น NetFlow v9 packets ส่งผ่าน UDP 2055 ไปยัง Linux Server (xxx.xxx.xxx.xx)
 3. **Ingest** — Telegraf inputs.netflow รับ และ parse เป็น metric
 4. **Enrich** — processors.starlark โหลด `app_classify.star` → binary search หา ASN จาก dst IP → tag `app`

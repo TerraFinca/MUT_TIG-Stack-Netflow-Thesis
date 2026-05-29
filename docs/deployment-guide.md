@@ -148,7 +148,7 @@ docker compose restart telegraf
 ```
 
 ### Alert Rules + Contact Points
-Grafana 12 รองรับ provisioning ผ่านไฟล์ YAML — copy JSON ใน `software/grafana/alerting/` ไปไว้ที่ `/etc/grafana/provisioning/alerting/` (ใน container) หรือ import ผ่าน UI:
+Grafana 12.4.1 รองรับ provisioning ผ่านไฟล์ YAML — copy JSON ใน `software/grafana/alerting/` ไปไว้ที่ `/etc/grafana/provisioning/alerting/` (ใน container) หรือ import ผ่าน UI:
 
 ```
 Alerting → Contact points → Import (paste JSON content)

@@ -1,6 +1,6 @@
 # InfluxDB Schema
 
-InfluxDB 1.8 with TSI (Time Series Index) — Time-series storage
+InfluxDB 1.8.10 with TSI (Time Series Index) — Time-series storage
 
 ## Database
 

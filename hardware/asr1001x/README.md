@@ -25,15 +25,13 @@
 1. **flow record NECS-RECORD** — Match: ipv4 dscp, protocol, src/dst addr, transport src/dst port; Collect: counter bytes/packets long, timestamp sys-uptime first/last
 2. **flow exporter NECS-EXPORT** — Destination: xxx.xxx.xxx.xx UDP 2055, template-data timeout 60
 3. **flow monitor MIIX-MONITOR** — Cache active 60s / inactive 15s, 200K entries
-4. **Interface binding** — `ip flow monitor MIIX-MONITOR input` AND `output` บน Te0/0/0 + Te0/0/1
+4. **Interface binding** — `ip flow monitor MIIX-MONITOR input` AND `output` บน Te0/0/0 (WAN-only single-chokepoint — final design หลังทดลอง multi-binding ที่ทำให้เกิด counter inflation ดู thesis §4.3.7)
 
 > ⚠️ **Anonymization note:** IP addresses in `flexnetflow-config.txt` are shown as `xxx.xxx.xxx.xx`. Replace with your actual collector IP, ASR-side IP, and uplink IPs before applying to a real device.
 
 ## Configuration Files
 
-- `flexnetflow-config.txt` — `show run | section flow` output
-
-> **Note:** ไฟล์ flexnetflow-config.txt ในตอนนี้ยังว่างอยู่ — เพิ่ม output ของ `show run | section flow` จากอุปกรณ์ ASR เพื่อให้ผู้ทำซ้ำสามารถ apply ได้ตรง ๆ
+- `flexnetflow-config.txt` — Reference configuration (`show run | section flow` output, IPs anonymized)
 
 ## Verification Commands
 
